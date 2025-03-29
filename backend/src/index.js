@@ -41,13 +41,6 @@ app.use(
   })
 );
 
-if ((process.env.NODE_ENV = 'production')) {
-  app.use(express.static(path.join(__dirname, '../frontend/dist')));
-  app.get('*', (req, res) => {
-    res.sendFile(path.resolve(__dirname, '../frontend', 'dist', 'index.html'));
-  });
-}
-
 const tempDir = path.join(process.cwd(), 'tmp');
 // cron jobs
 cron.schedule('0 * * * *', () => {
@@ -70,6 +63,13 @@ app.use('/api/admin', adminRoutes);
 app.use('/api/songs', songRoutes);
 app.use('/api/albums', albumRoutes);
 app.use('/api/stats', statRoutes);
+
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static(path.join(__dirname, '../frontend/dist')));
+  app.get('*', (req, res) => {
+    res.sendFile(path.resolve(__dirname, '../frontend', 'dist', 'index.html'));
+  });
+}
 
 //error handler
 app.use((err, req, res, next) => {
