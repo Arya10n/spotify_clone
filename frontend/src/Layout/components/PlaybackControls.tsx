@@ -65,7 +65,7 @@ const PlaybackControls = () => {
     <footer className='h-20 sm:h-24 bg-zinc-900 border-t border-zinc-800 px-4'>
       <div className='flex justify-between items-center h-full max-w-[1800px] mx-auto'>
         {/* currently playing song */}
-        <div className='hidden sm:flex items-center gap-4 min-w-[1800] w-[30%]'>
+        <div className='hidden sm:flex items-center gap-4 min-w-[180px] w-[30%]'>
           {currentSong && (
             <>
               <img
@@ -143,7 +143,7 @@ const PlaybackControls = () => {
           </div>
         </div>
         {/* volume controls */}
-        <div className='hidden sm:flex items-center gap-4 min-w-[30%] justify-end'>
+        <div className='hidden sm:flex items-center gap-4 min-w-[180px] w-[30%] justify-end'>
           <Button
             size='icon'
             variant='ghost'
